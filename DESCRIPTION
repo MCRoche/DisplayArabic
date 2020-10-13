@@ -1,0 +1,25 @@
+Package: DisplayArabic
+Title: Displays Correct Arabic on Plots in MacOS
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "MaryClare",
+           family = "Roche",
+           role = c("aut", "cre"),
+           email = "mcroche@princeton.edu",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This packages allows for Arabic to be correctly displayed on graphs produced by ggplot. This package is ONLY for macOS. Arabic displaying incorrectly appears to only be an issue in macOS.
+Config/reticulate:
+  list(
+    packages = list(
+      list(package = "python-bidi", version = "0.4.2", pip=TRUE),
+      list(package = "arabic-reshaper", version = "2.1.0", pip=TRUE)
+    )
+  )
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1.9000
+Imports: 
+    reticulate,
+    ggplot2
