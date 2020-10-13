@@ -1,15 +1,11 @@
-bidi <- NULL
+bidi <- arabic_reshaper <- NULL
 
 .onLoad <- function(libname, pkgname){
 
-  # Delay load of required python package
-  bidi <<- reticulate::import("python-bidi",delay_load = TRUE)
+  # Delay load of required python package?
 
-#  reticulate::configure_environment(pkgname)
+  bidi <<-reticulate::import("bidi.algorithm")
 
-  #system("pip install python-bidi")
-
-#  pth <- system("which python",intern = T)
-#  reticulate::use_python(pth,required = T)
+  arabic_reshaper <<-reticulate::import("arabic_reshaper")
 
 }
