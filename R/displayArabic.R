@@ -39,12 +39,20 @@ displayArabic <- function(Arabic_string){
 
     return(correct_Arabic)
 
-  } else if (!(reticulate::py_module_available("bidi")&!(reticulate::py_module_available("arabic_reshaper")))) {
-    stop("Error: fPlease install the required python modules `bidi` and `arabic_reshaper`. This can be done using install_bidi() and install_arabic.reshaper() from the DisplayArabic package.")
-  } else if (!(reticulate::py_module_available("bidi"))&(reticulate::py_module_available("arabic_reshaper"))) {
-    stop("Error: Please install the required python module `bibi`. \n This can be done using install_bidi() from the DisplayArabic package.")
-  } else if ((reticulate::py_module_available("bidi"))&!(reticulate::py_module_available("arabic_reshaper"))) {
-    stop("Error: Please install the required python module `arabic_reshaper`. \n This can be done using install_arabic.reshaper() from the DisplayArabic package.")
+  } else if (!(reticulate::py_module_available("bidi"))&!(reticulate::py_module_available("arabic_reshaper"))) {
+
+    # Error is neither bidi nor arabic_reshaper is installed:
+    stop("Error: Please install the required python modules `bidi` and `arabic_reshaper`. This can be done using install_bidi() and install_arabic.reshaper() from the DisplayArabic package.")
+
+    } else if (!(reticulate::py_module_available("bidi"))&(reticulate::py_module_available("arabic_reshaper"))) {
+
+      # Error if only bidi is missing:
+      stop("Error: Please install the required python module `bibi`. \n This can be done using install_bidi() from the DisplayArabic package.")
+
+      } else if ((reticulate::py_module_available("bidi"))&!(reticulate::py_module_available("arabic_reshaper"))) {
+
+        # Error if only arabic_reshaper is missing:
+        stop("Error: Please install the required python module `arabic_reshaper`. \n This can be done using install_arabic.reshaper() from the DisplayArabic package.")
   }
 
 }
