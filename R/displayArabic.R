@@ -32,8 +32,19 @@
 
 displayArabic <- function(Arabic_string){
 
-  Arabic_string <- arabic_reshaper$arabic_reshaper$reshape(Arabic_string)
-  correct_Arabic <- bidi$get_display(Arabic_string)
+  if (reticulate::py_module_available("bidi")&reticulate::py_module_available("arabic_reshaper")){
 
-  return(correct_Arabic)
+    Arabic_string <- arabic_reshaper$arabic_reshaper$reshape(Arabic_string)
+    correct_Arabic <- bidi$get_display(Arabic_string)
+
+    return(correct_Arabic)
+
+  } else if (!(reticulate::py_module_available("bidi")&!(reticulate::py_module_available("arabic_reshaper")))) {
+    print("Error: Please install the required python modules `bidi` and `arabic_reshaper`. \n This can be done using install_bidi() and install_arabic.reshaper() from the DisplayArabic package.")
+  } else if (!(reticulate::py_module_available("bidi"))&(reticulate::py_module_available("arabic_reshaper"))) {
+    print("Error: Please install the required python module `bibi`. \n This can be done using install_bidi() from the DisplayArabic package.")
+  } else if ((reticulate::py_module_available("bidi"))&!(reticulate::py_module_available("arabic_reshaper"))) {
+    print("Error: Please install the required python module `arabic_reshaper`. \n This can be done using install_arabic.reshaper() from the DisplayArabic package.")
+  }
+
 }
