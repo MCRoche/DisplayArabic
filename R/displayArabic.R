@@ -40,8 +40,7 @@ displayArabic <- function(Arabic_string){
     return(correct_Arabic)
 
   } else if (!(reticulate::py_module_available("bidi")&!(reticulate::py_module_available("arabic_reshaper")))) {
-    stop(cat("Please install the required python modules `bidi` and `arabic_reshaper`. This can be done using install_bidi() and install_arabic.reshaper() from the DisplayArabic package."),
-         fill=45)
+    stop("Error: fPlease install the required python modules `bidi` and `arabic_reshaper`. This can be done using install_bidi() and install_arabic.reshaper() from the DisplayArabic package.")
   } else if (!(reticulate::py_module_available("bidi"))&(reticulate::py_module_available("arabic_reshaper"))) {
     stop("Error: Please install the required python module `bibi`. \n This can be done using install_bidi() from the DisplayArabic package.")
   } else if ((reticulate::py_module_available("bidi"))&!(reticulate::py_module_available("arabic_reshaper"))) {
