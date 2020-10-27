@@ -4,8 +4,10 @@ bidi <- arabic_reshaper <- NULL
 
   # Delay load of required python package?
 
-  bidi <<-reticulate::import("bidi.algorithm")
+  bidi <<-reticulate::import("bidi.algorithm",
+                             delay_load = T)
 
-  arabic_reshaper <<-reticulate::import("arabic_reshaper")
+  arabic_reshaper <<-reticulate::import("arabic_reshaper",
+                                        delay_load = T)
 
 }
