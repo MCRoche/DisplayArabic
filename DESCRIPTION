@@ -23,3 +23,5 @@ RoxygenNote: 7.1.1.9000
 Imports: 
     reticulate,
     ggplot2
+Suggests: 
+    testthat
